@@ -1,7 +1,8 @@
 # ![Project Logo][project_logo]
 
 ---
-<h4 align="center">Scraping books from <a href="https://www.ebooks.com/" target="_blank">Ebooks</a> website and creating a web application using <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">Python</a> and <a href="https://streamlit.io/" target="_blank">Streamlit</a> to enable users download required set of books as per their requirements</h4>
+
+<h4 align="center">Empowering users to access tailored book selections from the <a href="https://www.ebooks.com/" target="_blank">Ebooks</a> website. This web application, developed with <a href="https://www.python.org/" target="_blank">Python</a> and <a href="https://streamlit.io/" target="_blank">Streamlit</a>, streamlines the process of downloading books that match their preferences.</h4>
 
 <p align='center'>
 <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="built-with-love" border="0">
