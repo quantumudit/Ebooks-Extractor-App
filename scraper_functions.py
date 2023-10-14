@@ -1,12 +1,12 @@
 """
-Book Data Retrieval
-=============================
+Data Scraping Helper Functions
+===============================
 Author: Udit Kumar Chatterjee
 Email: quantumudit@gmail.com
-=============================
+===============================
 
 This module provides a class retrieving book data from the Ebooks API.
-The methods defined in the class is used to fetch and manipulate book data
+The functions defined is used to fetch and manipulate book data
 from the Ebooks API in a convenient way.
 """
 

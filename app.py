@@ -1,4 +1,10 @@
 """
+Ebooks Data Extractor Script
+=============================
+Author: Udit Kumar Chatterjee
+Email: quantumudit@gmail.com
+=============================
+
 The code is a Streamlit application that allows users to select a category, subject, and topic,
 and then scrape ebook data from the eBooks.com website.
 It retrieves the data based on the user's selections and
