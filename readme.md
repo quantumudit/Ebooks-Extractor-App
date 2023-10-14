@@ -23,13 +23,21 @@
 
 The primary goal of this project revolves around the retrieval of comprehensive book data from the [Ebooks][website_link] website.
 
-[![Website Snippet][website_snippet]][website_link]
+<p align='center'>
+  <a href="https://www.ebooks.com/">
+    <img src="./images/website_snippet.png" alt="website-snippet" style="0">
+  </a>
+</p>
 
 The web application has been meticulously designed to cater to on-demand web scraping. In essence, it selectively extracts essential book information based on the user's specified choices regarding category, subject, and topic.
 
 Once the user designates a category, the application promptly generates a list of associated subjects for the user to select from. Likewise, upon selecting a subject, the application dynamically populates a dropdown menu with relevant topics (if available).
 
-[![Web Application][webapp_image]][webapp_link]
+<p align='center'>
+  <a href="https://ebooks-extractor-app.streamlit.app/">
+    <img src="./images/webapp_image.png" alt="webapp_image" style="0">
+  </a>
+</p>
 
 Armed with these three choices, users can effortlessly obtain their desired information in the form of a downloadable CSV file, simply by clicking the "Get Data" button.
 
@@ -102,7 +110,11 @@ The user is provided with a downloadable CSV file containing the acquired book d
 
 The following illustration demonstrates the process of collecting data by providing necessary inputs to the web application:
 
-![Application Graphic][webapp_graphic]
+<p align='center'>
+  <a href="https://ebooks-extractor-app.streamlit.app/">
+    <img src="./images/webapp_graphic.gif" alt="webapp-graphic" style="0">
+  </a>
+</p>
 
 > Access the web application by clicking here: **[Ebooks Extractor App][webapp_link]**
 
@@ -130,8 +142,11 @@ If you find my work valuable, you can show your appreciation by [buying me a cof
 This license allows reusers to distribute, remix, adapt, and build upon the material in any medium or format for noncommercial purposes only, and only so long as attribution is given to the creator. If you remix, adapt, or build upon the material, you must license the modified material under identical terms.
 
 ---
-
-![Book a Call][topmate_image]
+<p align='center'>
+  <a href="https://topmate.io/quantumudit">
+    <img src="./images/topmate_featured.png" alt="topmate-udit" style="0">
+  </a>
+</p>
 
 ---
 
@@ -139,16 +154,13 @@ This license allows reusers to distribute, remix, adapt, and build upon the mate
 
 [project_logo]: ./images/ebooks_logo.png
 [process_workflow]: ./images/process_workflow.png
-[webapp_graphic]: ./images/webapp_graphic.gif
-[website_snippet]: ./images/website_snippet.png
-[webapp_image]: ./images/webapp_image.png
-[topmate_image]: ./images/topmate_featured.png
 
 <!-- External Links -->
 
 [website_link]: https://www.ebooks.com/
-[requirements]: ./requirements.txt
 [webapp_link]: https://ebooks-extractor-app.streamlit.app/
+[requirements]: ./requirements.txt
+
 
 <!-- Project Specific Links -->
 
@@ -161,7 +173,6 @@ This license allows reusers to distribute, remix, adapt, and build upon the mate
 [twitter]: https://twitter.com/quantumudit
 [medium]: https://medium.com/@quantumudit
 [buy_me_a_coffee]: https://www.buymeacoffee.com/quantumudit
-[topmate]: https://topmate.io/quantumudit
 
 <!-- Shields Profile Links -->
 
