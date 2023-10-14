@@ -37,10 +37,14 @@ The project repository exhibits the following structure:
 
 ```
 Ebooks-Extractor-App/
+└─ 📁.streamlit/
+    ├─ ⚙️config.toml
 ├─ 📄app.py
 ├─ 📄scraper_functions.py
-├─ 📄readme.md
-├─ 📄requirements.txt
+├─ 🗒️readme.md
+├─ 🗒️requirements.txt
+├─ 📜.gitignore
+├─ 🔑LICENSE
 └─ 📁images/
    ├─ 🖼️books_image.jpg
    ├─ 🖼️ebooks_logo.png
@@ -61,7 +65,7 @@ The Streamlit application is driven by two fundamental Python scripts:
 To fully grasp the concepts and processes involved in this project, it is recommended to have a solid understanding of the following skills:
 
 - Fundamental knowledge of Python, APIs, Streamlit
-- Familiarity with the Python libraries listed in the [requirements.txt][requirements] file
+- Familiarity with the Python libraries listed in the 🗒️[requirements.txt][requirements] file
 - Basic familiarity with browser developer tools
 
 Having these skills as a foundation will help to ensure a smooth and effective experience while working on this project.
@@ -137,7 +141,7 @@ This license allows reusers to distribute, remix, adapt, and build upon the mate
 
 [website_link]: https://www.ebooks.com/
 [requirements]: ./requirements.txt
-[webapp_link]: https:/
+[webapp_link]: https://ebooks-extractor-app.streamlit.app/
 
 <!-- Project Specific Links -->
 
