@@ -48,8 +48,8 @@ The project repository exhibits the following structure:
 Ebooks-Extractor-App/
 └─ 📁.streamlit/
     ├─ ⚙️config.toml
-├─ 📄app.py
-├─ 📄scraper_functions.py
+├─ 🐍app.py
+├─ 🐍scraper_functions.py
 ├─ 🗒️readme.md
 ├─ 🗒️requirements.txt
 ├─ 📜.gitignore
@@ -64,9 +64,9 @@ Ebooks-Extractor-App/
 ```
 The Streamlit application is driven by two fundamental Python scripts:
 
-- **📄[app.py][app]**: This script capitalizes on functions from the [scraper_functions.py][scraper_funcs] file, enabling seamless web scraping. Moreover, it stands as the cornerstone of the Streamlit application.
+- **🐍[app.py][app]**: This script capitalizes on functions from the [scraper_functions.py][scraper_funcs] file, enabling seamless web scraping. Moreover, it stands as the cornerstone of the Streamlit application.
 
-- **📄[scraper_functions.py][scraper_funcs]**: This file houses a collection of functions specifically designed for data extraction via web scraping techniques.
+- **🐍[scraper_functions.py][scraper_funcs]**: This file houses a collection of functions specifically designed for data extraction via web scraping techniques.
 
 
 ## Prerequisites
