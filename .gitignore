@@ -13,6 +13,10 @@ __pycache__/
 *.pbix
 *.pbit
 
+# Ignore pipfile or pipfile.lock --> requirements.txt used 
+
+Pipfile*
+
 # Distribution / packaging
 .Python
 build/
