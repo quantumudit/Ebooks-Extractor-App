@@ -70,7 +70,7 @@ with col2:
     # Retrieve subject details for the available categories
     subject_details = get_category_subjects()
     all_subjects_dict = {
-        key: value for d in subject_details for key, value in d.items()}
+        sub_name: sub_id for d in subject_details for sub_name, sub_id in d.items()}
 
     # User selects a category
     category_select = st.selectbox(
