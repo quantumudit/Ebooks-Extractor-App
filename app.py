@@ -11,6 +11,7 @@ It retrieves the data based on the user's selections and
 generates a downloadable CSV file containing the ebook information.
 """
 
+# Import necessary libraries
 import time
 
 import pandas as pd
@@ -21,7 +22,7 @@ from scraper_functions import (get_books_data, get_category_subjects,
                                get_topics, parse_books_data,
                                total_books_present)
 
-# page configs
+# Configure the Streamlit page
 st.set_page_config(
     page_title="EBooks Data Extractor",
     page_icon="📖",
@@ -30,49 +31,54 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# image paths
+# Define paths for images
 logo_image = Image.open("./images/ebooks_logo.png")
 books_image = Image.open("./images/books_image.jpg")
 
-# get logo_image dimensions
+# Get the dimensions of the logo_image
 original_width, original_height = logo_image.size
 
-# Define the new width for logo
+# Define the new width for the logo
 NEW_WIDTH = 700
 
 # Calculate the new height to maintain the aspect ratio
 new_height = int((NEW_WIDTH / original_width) * original_height)
 
-# show resized logo
+# Display the resized logo
 new_logo_image = logo_image.resize((NEW_WIDTH, new_height))
 st.image(new_logo_image, use_column_width=False)
 
-
-# creating 2 columns sections
+# Create two columns for layout
 col1, col2 = st.columns([0.45, 0.55], gap="medium")
 
+# Populate col1 with image and project information
 with col1:
     st.image(books_image, use_column_width=True)
-
     st.write(
         """The application employs web scraping techniques to fetch ebook details
         from **[:blue[eBooks]](https://www.ebooks.com/)** website.
-        It then generates a downloadable CSV file for users.""")
+        It then generates a downloadable CSV file for users."""
+    )
+    st.write(
+        """To initiate the process, users select a category,
+        a subject, and, if available, a topic. The application then uses
+        these selections to scrape the data tailored to the user's preferences."""
+    )
 
-    st.write("""To initiate the process, users select a category,
-    a subject, and, if available, a topic. The application then uses
-    these selections to scrape the data tailored to the user's preferences.""")
-
-
+# Populate col2 with interactive elements
 with col2:
+    # Retrieve subject details for the available categories
     subject_details = get_category_subjects()
     all_subjects_dict = {
         key: value for d in subject_details for key, value in d.items()}
 
+    # User selects a category
     category_select = st.selectbox(
         'Choose a Category:',
-        ('Popular Subjects', 'Fiction', 'Non-Fiction'))
+        ('Popular Subjects', 'Fiction', 'Non-Fiction')
+    )
 
+    # User selects a subject based on the chosen category
     if category_select == "Popular Subjects":
         subject_select = st.selectbox(
             "Choose a Subject:", tuple(subject_details[0].keys()))
@@ -83,29 +89,33 @@ with col2:
         subject_select = st.selectbox(
             "Choose a Subject:", tuple(subject_details[2].keys()))
 
-    if subject_select is not None:
-        topics_details = get_topics(
-            subject_id=all_subjects_dict.get(subject_select, 0))
-    else:
-        topics_details = get_topics(subject_id=0)
+    # Retrieve topics for the selected subject
+    topics_details = get_topics(
+        subject_id=all_subjects_dict.get(subject_select))
 
+    # User selects a topic (if available) based on the selected subject
     topic_select = st.selectbox(
         "Choose a Topic:",
         tuple(topics_details.keys()))
 
+    # Create a button to initiate data extraction
     submit = st.button("Get Data")
 
     if submit:
+        # Determine the topic_id (subject_id if no topics available)
         if len(topics_details) == 0:
-            topic_id = all_subjects_dict.get(
-                subject_select, None)  # type: ignore
+            topic_id = all_subjects_dict.get(subject_select)
         else:
-            topic_id = topics_details.get(topic_select, None)  # type: ignore
+            topic_id = topics_details.get(topic_select)
 
+        # Initialize page number and an empty list for book details
         PAGE_NUM = 1
         all_books_details = []
+
+        # Get the total number of books available for the topic
         total_books_available = total_books_present(subject_id=topic_id)
 
+        # Create a progress bar for data extraction
         PROGRESS_TEXT = "Operation in progress. Please wait..."
         my_bar = st.progress(0, text=PROGRESS_TEXT)
 
@@ -116,10 +126,14 @@ with col2:
                     details = parse_books_data(book)
                     details["page_num"] = PAGE_NUM
                     all_books_details.append(details)
+
                 time.sleep(1)
+
                 PAGE_NUM += 1
+
                 progress_pct = int(
                     (len(all_books_details) / total_books_available) * 100)
+
                 my_bar.progress(
                     min(progress_pct, 100),
                     text=(
@@ -130,6 +144,7 @@ with col2:
             else:
                 break
 
+        # Generate a CSV file for user download
         if len(all_books_details) == 0:
             st.write("No books available to collect")
         else:
