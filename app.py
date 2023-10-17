@@ -13,6 +13,7 @@ generates a downloadable CSV file containing the ebook information.
 
 # Import necessary libraries
 import time
+from datetime import datetime
 
 import pandas as pd
 import streamlit as st
@@ -123,7 +124,8 @@ with col2:
             if books_data is not None and len(books_data) > 0:
                 for book in books_data:
                     details = parse_books_data(book)
-                    details["page_num"] = PAGE_NUM
+                    details["scrape_timestamp"] = datetime.now().strftime(
+                        "%Y-%m-%d %H:%M:%S")
                     all_books_details.append(details)
 
                 time.sleep(1)
@@ -148,11 +150,11 @@ with col2:
             st.write("No books available to collect")
         else:
             books_df = pd.DataFrame(all_books_details)
-            csv_file = books_df.to_csv().encode("utf-8")
+            BOOKS_DATA_CSV = books_df.to_csv(index=False, encoding='utf-8')
 
             st.download_button(
                 label="Download Data as CSV",
-                data=csv_file,
+                data=BOOKS_DATA_CSV,
                 file_name="books_data.csv",
                 mime="text/csv"
             )

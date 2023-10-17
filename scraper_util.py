@@ -35,26 +35,33 @@ class Book:
 
     Attributes:
     -----------
-    book_id : Optional[str]
-        The ID of the book.
-    book_title : Optional[str]
-        The title of the book.
-    publication_year : Optional[int]
-        The year of publication of the book.
-    price : Optional[str]
-        The price of the book.
-    authors : Optional[str]
-        The authors of the book.
-    book_url : Optional[str]
-        The URL of the book.
-    book_image_url : Optional[str]
-        The URL of the book's image.
+    book_id: The ID of the book.
+    book_title: The title of the book.
+    book_subtitle: The subtitle of the book.
+    book_description: The description of the book.
+    publisher: The publisher of the book.
+    edition: The edition of the book.
+    publication_date: The date of publication of the book.
+    publication_month_year: The month and year of publication of the book.
+    publication_year: The year of publication of the book.
+    price: The price of the book in USD.
+    prime_authors: The primary/main authors of the book.
+    num_authors: The number of authors of the book.
+    book_url: The URL of the book.
+    book_image_url: The URL of the book's image.
     """
     book_id: Optional[str]
     book_title: Optional[str]
+    book_subtitle: Optional[str]
+    book_description: Optional[str]
+    publisher: Optional[str]
+    edition: Optional[str]
+    publication_date: Optional[str]
+    publication_month_year: Optional[str]
     publication_year: Optional[int]
     price: Optional[str]
-    authors: Optional[str]
+    prime_authors: Optional[str]
+    num_authors: Optional[int]
     book_url: Optional[str]
     book_image_url: Optional[str]
 
@@ -79,9 +86,16 @@ def parse_books_data(book: Dict[str, Any]) -> Dict[str, Any]:
     book_details = Book(
         book_id=book.get("id"),
         book_title=book.get("title"),
+        book_subtitle=book.get("subtitle"),
+        book_description=book.get("description"),
+        publisher=book.get("publisher"),
+        edition=book.get("edition"),
+        publication_date=book.get("on_sale_date"),
+        publication_month_year=book.get("short_publication_date"),
         publication_year=book.get("publication_year"),
         price=book.get("price"),
-        authors=authors,
+        prime_authors=authors if authors else "Unknown",
+        num_authors=book.get("num_authors"),
         book_url=book_url,
         book_image_url=book.get("image_url")
     )
