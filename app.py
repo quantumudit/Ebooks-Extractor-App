@@ -18,9 +18,8 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 
-from scraper_functions import (get_books_data, get_category_subjects,
-                               get_topics, parse_books_data,
-                               total_books_present)
+from scraper_util import (get_books_data, get_category_subjects, get_topics,
+                          parse_books_data, total_books_present)
 
 # Configure the Streamlit page
 st.set_page_config(
