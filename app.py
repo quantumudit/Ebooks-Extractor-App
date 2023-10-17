@@ -19,8 +19,7 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 
-from scraper_util import (get_books_data, get_category_subjects, get_topics,
-                          parse_books_data, total_books_present)
+import scraper_util as su
 
 # Configure the Streamlit page
 st.set_page_config(
@@ -68,7 +67,7 @@ with col1:
 # Populate col2 with interactive elements
 with col2:
     # Retrieve subject details for the available categories
-    subject_details = get_category_subjects()
+    subject_details = su.get_category_subjects()
     all_subjects_dict = {
         sub_name: sub_id for d in subject_details for sub_name, sub_id in d.items()}
 
@@ -90,7 +89,7 @@ with col2:
             "Choose a Subject:", tuple(subject_details[2].keys()))
 
     # Retrieve topics for the selected subject
-    topics_details = get_topics(
+    topics_details = su.get_topics_for_subject(
         subject_id=all_subjects_dict.get(subject_select))
 
     # User selects a topic (if available) based on the selected subject
@@ -113,17 +112,18 @@ with col2:
         all_books_details = []
 
         # Get the total number of books available for the topic
-        total_books_available = total_books_present(subject_id=topic_id)
+        total_books_available = su.fetch_total_books_count(subject_id=topic_id)
 
         # Create a progress bar for data extraction
         PROGRESS_TEXT = "Operation in progress. Please wait..."
         my_bar = st.progress(0, text=PROGRESS_TEXT)
 
         while True:
-            books_data = get_books_data(page_num=PAGE_NUM, subject_id=topic_id)
+            books_data = su.fetch_books_data(
+                page_num=PAGE_NUM, subject_id=topic_id)
             if books_data is not None and len(books_data) > 0:
                 for book in books_data:
-                    details = parse_books_data(book)
+                    details = su.parse_books_details(book)
                     details["scrape_timestamp"] = datetime.now().strftime(
                         "%Y-%m-%d %H:%M:%S")
                     all_books_details.append(details)

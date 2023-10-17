@@ -11,12 +11,11 @@ from the Ebooks API in a convenient way.
 
 Functions:
 ----------
-1. parse_books_data(): Parse book details and return as a dictionary.
+1. parse_books_details(): Parse book details and return as a dictionary.
 2. get_category_subjects(): Retrieve category subjects from the Ebooks API.
-3. get_topics(): Retrieve topics for a given subject ID.
-4. total_books_present(): Retrieve the total number of books for a subject.
-5. get_books_data(): Retrieve books data for a page and subject.
-
+3. get_topics_for_subject(): Retrieve topics for a given subject ID.
+4. fetch_total_books_count(): Retrieve the total number of books for a subject.
+5. fetch_books_data(): Retrieve books data for a page and subject.
 """
 
 
@@ -66,7 +65,7 @@ class Book:
     book_image_url: Optional[str]
 
 
-def parse_books_data(book: Dict[str, Any]) -> Dict[str, Any]:
+def parse_books_details(book: Dict[str, Any]) -> Dict[str, Any]:
     """
     Parse the details of a book and return them as a dictionary.
 
@@ -133,7 +132,7 @@ def get_category_subjects() -> List[Dict[str, int]]:
     return [popular_cat_dict, fiction_cat_dict, non_fiction_cat_dict]
 
 
-def get_topics(subject_id: int) -> Dict[str, int]:
+def get_topics_for_subject(subject_id: int) -> Dict[str, int]:
     """Retrieve the topics for a given subject ID from the Ebooks API.
 
     Args:
@@ -160,7 +159,7 @@ def get_topics(subject_id: int) -> Dict[str, int]:
     return fetch_topics(subject_id)
 
 
-def total_books_present(subject_id: int) -> int:
+def fetch_total_books_count(subject_id: int) -> int:
     """
     Retrieve the total number of books present for a given subject ID from the Ebooks API.
 
@@ -186,7 +185,7 @@ def total_books_present(subject_id: int) -> int:
     return int(total_books)
 
 
-def get_books_data(page_num: int, subject_id: int) -> Optional[List[Dict]]:
+def fetch_books_data(page_num: int, subject_id: int) -> Optional[List[Dict]]:
     """Retrieve the books data for a given page number and subject ID from the Ebooks API.
 
     Args:
